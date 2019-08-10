@@ -1,3 +1,4 @@
+// 1.
 var paddleHeight = 150;
 var paddleWidth = 30;
 var ballRadius = 25;
@@ -15,7 +16,7 @@ var score2 = 0;
 // We will keep a list of variables to keep track of all the important information.
 // each keeps track of the corresponding top and left values, so that when the variables change, so do the style values
 	
-//gives a random left and top speed to the ball.
+//7. gives a random left and top speed to the ball.
 //If side is negative, the ball will move to the left. If side is positive ball will move to the right. 
 // Next, the speed of the ball is set by random values
 function startBall() {
@@ -30,7 +31,7 @@ function startBall() {
 	leftSpeedOfBall = side * (Math.random() * 6 + 5);
 };
 
-// keep track of the up and down values 
+//2. keep track of the up and down values 
 document.addEventListener('keydown', function (e) {
      if (e.keyCode == 87 || e.which == 87) { // W key
       speedOfPaddle1 = -10;
@@ -46,7 +47,7 @@ document.addEventListener('keydown', function (e) {
      }
 }, false);
 
-
+// 3.stops the paddle when key is let go
 document.addEventListener('keyup', function (e) {
 	if (e.keyCode == 87 || e.which == 87) {
 		speedOfPaddle1 = 0;
@@ -61,9 +62,12 @@ document.addEventListener('keyup', function (e) {
 		speedOfPaddle2 = 0;
 	}
 }, false);
-function print() {
-	console.log(positionOfPaddle1);
-}
+
+// function print() {
+// 	console.log(positionOfPaddle1);
+// }
+
+//4. This function gets called 60 times per second 
 window.setInterval(function show() {
 
 	//stops paddles going beyond window
@@ -71,8 +75,13 @@ window.setInterval(function show() {
 	//  don’t change the position of the paddle. If the paddle position is a paddle length away from the bottom of the screen, then stop the paddle
 	positionOfPaddle1 += speedOfPaddle1;
 	positionOfPaddle2 += speedOfPaddle2;
+
+	// 6. update ball position based on ball speed, this happens onload (script tags in html)
+	// see Math.random function
 	topPositionOfBall += topSpeedOfBall;
 	leftPositionOfBall += leftSpeedOfBall;
+
+// 6.if the paddle is 1px away from edge of screen stop the paddle from moving beyond that point
 	if (positionOfPaddle1 <= 1) {
 		positionOfPaddle1 = 1;
 	}
@@ -85,12 +94,12 @@ window.setInterval(function show() {
 	if (positionOfPaddle2 > window.innerHeight - paddleHeight) {
 		positionOfPaddle2 = window.innerHeight - paddleHeight;
 	}
-	// If it bounces off the top of the screen, the top speed will become negative and it will go in the other direction
+	//8. If it bounces off the top of the screen, the top speed will become negative and it will go in the other direction
 	if (topPositionOfBall <= 10 || topPositionOfBall >= window.innerHeight - ballRadius) {
 		topSpeedOfBall = -topSpeedOfBall
 	}
 
-	// reflect off paddle
+	// 9. reflect off paddle
 	if (leftPositionOfBall <= paddleWidth) {
 		if (topPositionOfBall > positionOfPaddle1 && topPositionOfBall < positionOfPaddle1 + paddleHeight) {
 			leftSpeedOfBall = -leftSpeedOfBall;
@@ -112,10 +121,12 @@ window.setInterval(function show() {
 		}
 	}
 
-	// change the top px value of paddle
+	// 5. change the top px value of paddle
 	//change the left 
 	document.getElementById("paddle1").style.top = (positionOfPaddle1) + "px";
 	document.getElementById("paddle2").style.top = (positionOfPaddle2) + "px";
+
+
 	document.getElementById("ball").style.top = (topPositionOfBall) + "px";
 	document.getElementById("ball").style.left = (leftPositionOfBall) + "px";
 	document.getElementById('score1').innerHTML = score1.toString();
