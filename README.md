@@ -7,4 +7,3 @@ Game instructions:
 Player1 : W and S Keys
 Player2: Up and down arrow keys
 
-adapted from https://github.com/hershalb/Pong/blob/master/pong.html
