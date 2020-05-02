@@ -14,9 +14,15 @@ body {
     background-color:blue;
 }
 
-.vertical { 
-    border-left: 6px dotted black; 
-    height: 100%; 
+.vertical {
+    border-left: 6px dotted black;
+    height: 100%;
     position: fixed;
     margin: auto;
+}
+
+.score-holder {
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }

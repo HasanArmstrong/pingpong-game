@@ -15,9 +15,9 @@ var score1 = 0;
 var score2 = 0;
 // We will keep a list of variables to keep track of all the important information.
 // each keeps track of the corresponding top and left values, so that when the variables change, so do the style values
-	
+
 //7. gives a random left and top speed to the ball.
-//If side is negative, the ball will move to the left. If side is positive ball will move to the right. 
+//If side is negative, the ball will move to the left. If side is positive ball will move to the right.
 // Next, the speed of the ball is set by random values
 function startBall() {
 	topPositionOfBall = 210;
@@ -31,7 +31,7 @@ function startBall() {
 	leftSpeedOfBall = side * (Math.random() * 6 + 5);
 };
 
-//2. keep track of the up and down values 
+//2. keep track of the up and down values
 document.addEventListener('keydown', function (e) {
      if (e.keyCode == 87 || e.which == 87) { // W key
       speedOfPaddle1 = -10;
@@ -67,7 +67,7 @@ document.addEventListener('keyup', function (e) {
 // 	console.log(positionOfPaddle1);
 // }
 
-//4. This function gets called 60 times per second 
+//4. This function gets called 60 times per second
 window.setInterval(function show() {
 
 	//stops paddles going beyond window
@@ -105,7 +105,7 @@ window.setInterval(function show() {
 			leftSpeedOfBall = -leftSpeedOfBall;
 		} else {
 			score2++;
-			var audio = new Audio('audio/applause2.wav')		
+			var audio = new Audio('audio/applause2.wav')
 			audio.play()
 			startBall();
 		}
@@ -115,14 +115,14 @@ window.setInterval(function show() {
 			leftSpeedOfBall = -leftSpeedOfBall
 		} else {
 			score1++
-			var audio = new Audio('audio/applause2.wav')		
+			var audio = new Audio('audio/applause2.wav')
 			audio.play()
 			startBall();
 		}
 	}
 
 	// 5. change the top px value of paddle
-	//change the left 
+	//change the left
 	document.getElementById("paddle1").style.top = (positionOfPaddle1) + "px";
 	document.getElementById("paddle2").style.top = (positionOfPaddle2) + "px";
 
